@@ -1,0 +1,45 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner scan = new Scanner(System.in);
+		int test = scan.nextInt();
+		
+		while(test-->0){
+		    int n = scan.nextInt();
+		    HashMap<Integer, Integer> freq = new HashMap<>();
+		    
+		    for(int i = 0; i< n ;i++){
+		        int elem = scan.nextInt();
+		        if(freq.containsKey(elem)){
+		            freq.put(elem,freq.get(elem)+1);
+		        }else{
+		            freq.put(elem,1);
+		        }
+		    }
+		    int maxFreq = Integer.MIN_VALUE;
+		    int maxFreqCount = 0;  
+        //Traverse the map & search for max freq
+		    for(Integer elem : freq.keySet()){
+		        if(maxFreq<freq.get(elem)){
+		            maxFreq = freq.get(elem);
+		        }
+		    }
+        //traverse the map & check if any freq matches with the max freq
+		    for(Integer elem:freq.keySet()){
+		        if(maxFreq == freq.get(elem)){
+		            maxFreqCount++;
+		        }
+		    }
+		    System.out.println((maxFreqCount>1)?"No":"Yes");
+		}//End of while test
+	}
+}
